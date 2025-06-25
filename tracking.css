@@ -4,6 +4,18 @@
                 url('https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
+    
+}
+
+
+
+.page-hero {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
 }
 
 .tracking-main-section {
@@ -31,6 +43,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    
 }
 
 .tracking-header i {
@@ -196,5 +209,12 @@
 @media (max-width: 992px) {
     .tracking-container {
         grid-template-columns: 1fr;
+
     }
+
+    
+.page-hero {
+    height: 300px;
+    
+}
 }

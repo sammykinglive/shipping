@@ -1,6 +1,6 @@
 /* Base Styles */
 :root {
-    --primary-color: #0056b3;
+    --primary-color: #b9a10b;
     --primary-dark: #003d82;
     --secondary-color: #ff6b00;
     --dark-color: #2c3e50;
@@ -162,6 +162,11 @@ section {
     box-shadow: var(--box-shadow);
 }
 
+
+
+
+
+
 /* Header Styles */
 .header {
     position: fixed;
@@ -174,7 +179,7 @@ section {
 }
 
 .header.scrolled {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #2c3e50;
     padding: 15px 0;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
@@ -256,9 +261,208 @@ section {
 
 
 
+/* Hero Section with Video */
+.hero {
+    position: relative;
+    height: 400px;
+    min-height: 600px;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(1, 1, 1, 0.895) 0%, rgba(1, 13, 39, 0.731) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 700px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 20px;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-content h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: #FFD700; /* Gold accent line */
+}
+
+.hero-content .subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    animation: fadeInUp 1s ease 0.6s forwards;
+    opacity: 0;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    color: white;
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .hero-content .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 500px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .video-container {
+        height: 100vh;
+    }
+    
+    /* Fallback image for mobile if video doesn't load */
+    .video-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+        z-index: 3;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content .subtitle {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+    
+    /* Disable video on very small devices */
+    .video-container video {
+        display: none;
+    }
+}
 
 
-/* Hero Section */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hero Section 
 .hero {
     position: relative;
     height: 100vh;
@@ -499,7 +703,7 @@ section {
     }
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments 
 @media (max-width: 992px) {
     .hero-content h1 {
         font-size: 2.8rem;
@@ -552,7 +756,11 @@ section {
     .hero-slide-controls {
         bottom: 30px;
     }
-}
+}*/
+
+
+
+
 
 
 
@@ -640,10 +848,10 @@ section {
 
 .about-sec-image img {
   width: 100%;
-  height: 300px;
+  height: 400px;
   border-radius: 4px;
   object-fit: cover;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.288);
 }
 
 /* Animations */
@@ -665,9 +873,18 @@ section {
   }
 
   .about-sec-image {
-    order: -1;
-    margin-bottom: 30px;
+    order: 1;
+    margin-bottom: 10px;
+   
   }
+
+  .about-sec-image img {
+  width: 100%;
+  height: 200px;
+  border-radius: 4px;
+  
+}
+
 
   .about-sec-card h2 {
     font-size: 24px;
@@ -692,6 +909,7 @@ section {
 .tracking-section {
     background-color: var(--light-color);
     padding: 60px 0;
+    
 }
 
 .tracking-form {
@@ -1172,6 +1390,10 @@ section {
     opacity: 0.9;
 }
 
+
+
+
+
 /* Testimonials Section */
 .testimonials-section {
     background-color: var(--light-color);
@@ -1287,6 +1509,10 @@ section {
     transform: scale(1.2);
 }
 
+
+
+
+
 /* About Section */
 .about-content {
     display: grid;
@@ -1339,6 +1565,11 @@ section {
     transform: scale(1.05);
 }
 
+
+
+
+
+
 /* CTA Section */
 .cta-section {
     background-color: var(--primary-color);
@@ -1386,6 +1617,13 @@ section {
     justify-content: center;
     gap: 20px;
 }
+
+
+
+
+
+
+
 
 /* Contact Section */
 .contact-content {
@@ -1468,6 +1706,11 @@ section {
     resize: vertical;
     min-height: 120px;
 }
+
+
+
+
+
 
 /* Footer */
 .footer {

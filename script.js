@@ -385,3 +385,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+
+
+
+
+
+
+
+// Add this to your existing script.js file
+document.addEventListener('DOMContentLoaded', function() {
+    // Hero Video Handling
+    const heroVideo = document.querySelector('.hero video');
+    
+    // Check if mobile device and fallback to image if needed
+    function handleVideoFallback() {
+        if (window.innerWidth <= 768) {
+            // On mobile, pause video and rely on CSS fallback
+            if (heroVideo) {
+                heroVideo.pause();
+            }
+        } else {
+            // On desktop, ensure video plays
+            if (heroVideo) {
+                heroVideo.play().catch(e => {
+                    console.log("Video autoplay prevented:", e);
+                    // Show play button or handle accordingly
+                });
+            }
+        }
+    }
+
+    // Initial check
+    handleVideoFallback();
+    
+    // Check on resize
+    window.addEventListener('resize', handleVideoFallback);
+
+    // Scroll down button functionality
+    const scrollDownBtn = document.querySelector('.scroll-down');
+    if (scrollDownBtn) {
+        scrollDownBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: window.innerHeight - 80,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Rest of your existing JavaScript...
+});
