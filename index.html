@@ -49,12 +49,19 @@
 <!-- Hero Section with Video Background -->
 <section class="hero" id="home">
     <div class="video-container">
-        <video autoplay muted loop playsinline>
+         <!-- Primary video for desktop -->
+        <video class="desktop-video" autoplay muted loop playsinline preload="auto" poster="poster.jpg">
             <source src="videos/herovideo3.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
         </video>
+        
+        <!-- Smaller video for mobile -->
+        <video class="mobile-video" autoplay muted loop playsinline preload="auto" poster="poster.jpg">
+            <source src="videos/herovideo3mob.mp4" type="video/mp4" media="(max-width: 768px)">
+        </video>
+        
         <div class="video-overlay"></div>
     </div>
+    
     
     <div class="container">
         <div class="hero-content">

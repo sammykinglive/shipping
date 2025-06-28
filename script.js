@@ -437,3 +437,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Rest of your existing JavaScript...
 });
+
+
+
+// Video handling with fallback
+function initHeroVideo() {
+    const videoContainer = document.querySelector('.video-container');
+    const desktopVideo = document.querySelector('.desktop-video');
+    const mobileVideo = document.querySelector('.mobile-video');
+    
+    // Check if mobile
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const videoToUse = isMobile ? mobileVideo : desktopVideo;
+    
+    if (videoToUse) {
+        // Force mute (required for iOS)
+        videoToUse.muted = true;
+        
+        // Attempt to play
+        const playPromise = videoToUse.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // If autoplay fails, show fallback
+                videoContainer.classList.add('video-failed');
+            });
+        }
+    }
+}
+
+// Initialize on load and if orientation changes
+window.addEventListener('load', initHeroVideo);
+window.addEventListener('orientationchange', initHeroVideo);
